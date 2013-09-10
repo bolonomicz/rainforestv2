@@ -1,13 +1,17 @@
 Rainforestv2::Application.routes.draw do
   
 
-  get "sessions/new"
+ 
 
-  get "sessions/create"
+  get "reviews/show"
 
-  get "sessions/destroy"
+  get "reviews/new"
 
-  resources :products
+  get "reviews/edit"
+
+  resources :products do
+    resources :reviews, :except => [:index]
+  end
   resources :users, :only => [:new, :create]
   resources :sessions, :only => [:new, :create, :destroy]
   root :to => 'products#index'
